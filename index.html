@@ -1,0 +1,90 @@
+	<!DOCTYPE html>
+<html ng-app="LoginView">
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+   
+
+	<title> Student Management </title>
+	<script src="cdn/angular.min.js"></script>
+	<script src="cdn/angular-route.min.js"></script>
+	<script src="indexscripct.js"></script>
+    
+	<style type="text/css" >
+.header {
+    width: 1300px;
+    height: 80px;
+    text-align: center;
+    background-color: #CCFFCC;
+}
+
+.footer {
+    background-color: #CCFFCC;
+    text-align: center;
+    height: 80px;
+}
+
+.leftMenu {
+    height: 450px;
+    background-color: #CCFFCC;
+    width: 150px;
+}
+
+.mainContent {
+    height: 450px;  
+    
+    
+    width: 650px;
+}
+a {
+    background-color: #4CAF50;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a:hover {
+  background-color: black;
+}
+
+a:active {
+  background-color: black;
+}
+
+a{
+    display:block;
+    padding:20px
+}
+		
+	</style>
+</head>
+<body>
+<table style="font-family: Arial">
+    <tr>
+        <td colspan="2" class="header">
+            <h1>
+                Student Management System
+            </h1>
+        </td>
+    </tr>
+    <tr>
+        <td class="leftMenu">
+            <a ui-sref="studentLogin">Student Login</a>
+            <a ui-sref="teacherLogin">Teacher Login</a>
+            <a ui-sref="directorLogin">Director Login</a>
+        </td>
+        <td class="mainContent">
+            <div class="ui-view">
+        </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" class="footer">
+            <h2>KIET Group Of Institutions</h2>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

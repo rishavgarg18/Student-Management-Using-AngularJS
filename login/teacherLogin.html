@@ -1,0 +1,101 @@
+<style type="text/css">
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  height: fit-content;
+  }
+
+  .login {
+    
+    
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto 1fr;
+    grid-template-areas:
+      "top     top     top"
+      "lside   center  rside"
+      "bottom  bottom  bottom";
+    grid-auto-flow: column;
+    height: 100%;
+  }
+
+  .box {
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+
+  .input-box {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    grid-template-columns: 1fr;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .input-box label {
+    color: #4CAF50;
+    font-size: 0.9rem;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .input-box input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #a9a9a9;
+    color: #a9a9a9;
+    font-size: 1.1rem;
+    outline: none;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+  }
+  .input-box input:focus {
+    font-weight: 700;
+  }
+  
+  button {
+    background-color: #679e63;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 5px 0 #50894a;
+    color: #363a45;
+    display: grid;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 15px 20px;
+    position: relative;
+    width: 100%;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+
+
+</style>
+<body ng-controller="teacherLoginController">
+  <div class="login" >
+    <div class="box">
+      <h1>Teacher Login</h1>
+      <div class="input-box">
+        <label for="iEmail" >E-Mail</label>
+        <input id="iEmail" ng-model="email" placeholder="enter your e-mail" />
+
+      </div>
+      <div class="input-box">
+        <label for="iPassword" >Password</label>
+        <input id="iPassword" ng-model="password" placeholder="enter your password" />
+      </div>
+      <button ng-click="submit()">Login</button>
+      
+      <h1 style="color:#FF0000 ">{{error}}</h1> 
+      
+      </div>
+    </div>
+ 
+</body>
