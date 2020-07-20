@@ -1,3 +1,7 @@
+    sessionStorage.setItem("login_teacher", "0");
+sessionStorage.setItem("login_student", "0");
+var api=sessionStorage.getItem('backend_api');
+console.log(api);
 var app= angular.module("LoginView",['ui.router'])
 				.config(function ($stateProvider, $urlRouterProvider) {
 					$stateProvider
@@ -10,7 +14,14 @@ var app= angular.module("LoginView",['ui.router'])
 									url: '/teacherlogin',
 									templateUrl: "login/teacherLogin.html",
 									controller: "teacherLoginController"
-								})			
+								})
+                                .state('root', {
+                                    url: '/',
+                                    templateUrl: "default.html"
+                                
+                            
+                                })
+                                $urlRouterProvider.otherwise('/');			
 				})
 				.controller("studentLoginController",function($scope,$http){
 					$scope.error="";	
@@ -20,9 +31,9 @@ var app= angular.module("LoginView",['ui.router'])
             			// let url =  window.backend__url+"patient_login/login/"
             			$http({
                     			method: 'POST',
-                    			url: 'http://5ef75fe8c045.ngrok.io/student/login/',
+                    			url: api+'/students/login/',
                     			data: {
-                        				'mailId': email,
+                        				'mail_id': email,
                         				'password': Password,
                      
                     					}
@@ -32,13 +43,21 @@ var app= angular.module("LoginView",['ui.router'])
       					function (response){
         				$scope.myWelcome = response.data;
         				console.log($scope.myWelcome);
-        				if ($scope.myWelcome=="OK")
-        				{
-        					window.location.href="studentdashboard/welcome.html";
+        				if ($scope.myWelcome=="Invalid Credentials")
+        				{   
+                            $scope.error=$scope.myWelcome;
+                            sessionStorage.setItem("login_student", "0");
         				}
         				else
+
         				{
-        					$scope.error=$scope.myWelcome;
+
+
+                            sessionStorage.setItem('student_id', $scope.myWelcome[0].id);
+
+                            window.location.href="studentdashboard/welcome.html";
+                            sessionStorage.setItem("login_student", "1");
+        					
         				}
             			},
             			function (reason){
@@ -62,7 +81,7 @@ var app= angular.module("LoginView",['ui.router'])
             			// let url =  window.backend__url+"patient_login/login/"
             			$http({
                     			method: 'POST',
-                    			url: 'http://5ef75fe8c045.ngrok.io/teacher/login/',
+                    			url: api+'/teacher/login/',
                     			data: {
                         				'mailId': email,
                         				'password': Password,
@@ -77,10 +96,12 @@ var app= angular.module("LoginView",['ui.router'])
         				if ($scope.myWelcome=="OK")
         				{
         					window.location.href="teacherdashboard/welcome.html";
+                            sessionStorage.setItem("login_teacher", "1");
         				}
         				else
         				{
         					$scope.error=$scope.myWelcome;
+                            sessionStorage.setItem("login_teacher", "0");
         				}
             			},
             			function (reason){

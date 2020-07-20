@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Edit Student</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <script src="script.js"></script>
+    <style type="text/css" >
+
+ 
+html, body{
+    
+     
+    height:100%;
+}
+.container{ 
+   height:100%;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+}
+.content{
+    background-color:white;
+    width:500px;
+    height:500px;
+}
+
+.form-title{
+    padding:10px 40px 0px;
+}
+form{
+    padding:0px 40px;
+}
+input[type=text], [type=email]{
+    border: none;
+    border-bottom: 1px solid black;
+    outline:none;
+    width:100%;
+    margin: 8px 0;
+    padding:10px 0;
+}
+input[type=number]{
+    border: none;
+    border-bottom: 1px solid black;
+    outline:none;
+    margin: 8px 0;
+    padding:5px 0;
+}
+input :hover {
+    background-color: red;
+}
+select{
+    border: none;
+    border-bottom: 1px solid black;
+    outline:none;
+    margin: 8px 0;
+    padding:5px 0;
+    width:50%;
+}
+.beside{
+    display:flex;  
+    justify-content: space-between;
+}
+button{
+    color:#ffffff;
+    background-color: #4caf50;
+    height:40px;
+    width:25%;
+    margin-top:15px;
+    cursor: pointer;
+    border:none;
+    border-radius:2%;
+    outline:none;
+    text-align:center;
+    font-size:16px;
+    text-decoration:none;
+    -webkit-transition-duration:0.4s;
+    transition-duration:0.4s;
+}
+button:hover{
+    background-color:#333333;
+}
+    
+</style>
+</head>
+<body ng-app="teacher_dash" ng-controller="editstudentcontroller">
+
+
+
+
+
+<div class="container" >
+    <div class="content" >
+    
+            <h1 class="form-title">Edit Student Here</h1>
+            
+               <input type="text" ng-model='Name' placeholder="NAME">
+            <div class="beside">
+                <input  ng-model='phone_no' placeholder="PHONE NUMBER">
+                <input type="password" ng-model='password' placeholder="PASSWORD">
+            </div>
+                <input type="email" ng-model='mail_id' placeholder="EMAIL ADDRESS">
+                <input type="text" ng-model='course' placeholder="COURSE">
+                <input type="text" ng-model='Branch' placeholder="BRANCH">
+                <input ng-model='Roll_no' placeholder="ROLL NUMBER"><br>
+                <button ng-click="sendupdate()">Submit</button>
+                <h1>{{Name}}</h1>
+            
+        </div>
+ </div>
+</body>
+</html>
